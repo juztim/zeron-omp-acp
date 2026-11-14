@@ -1,0 +1,6 @@
+#!/bin/sh
+# Launches the locally installed omp in ACP mode for Zeron.
+# Set OMP_EXECUTABLE to override the omp path.
+omp="${OMP_EXECUTABLE:-$HOME/.local/bin/omp}"
+[ -x "$omp" ] || omp="$(command -v omp)" || { echo "omp not found; set OMP_EXECUTABLE" >&2; exit 127; }
+exec "$omp" acp "$@"
